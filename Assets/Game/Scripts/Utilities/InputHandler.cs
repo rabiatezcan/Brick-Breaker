@@ -6,7 +6,7 @@ using UnityEngine;
 public class InputHandler
 {
     public Action OnMouseButtonDown;
-    public Action<Vector3> OnMouseButton;
+    public Action<Vector2> OnMouseButton;
     public Action OnMouseButtonUp;
 
     private Vector2 _clickPos;
