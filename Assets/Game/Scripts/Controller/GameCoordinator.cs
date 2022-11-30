@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameCoordinator : Controller
 {
     [SerializeField] private Breaker _breaker;
+    [SerializeField] private Ball _ball;
     private InputHandler _inputHandler;
 
     private bool _canListen;
@@ -21,6 +22,7 @@ public class GameCoordinator : Controller
 
     public override void StartGame()
     {
+        _ball.StartGame();
         ListenInputs();
     }
     public override void GameFail()
