@@ -13,9 +13,6 @@ public class InputHandler
     private Vector2 _currentPos;
     private Vector2 _previousPos;
     private Vector2 _deltaPos;
-
-    private bool _isPressing;
-
     public void Update()
     {
         InputUpdate();
@@ -25,8 +22,6 @@ public class InputHandler
     {
         if (Input.GetMouseButtonDown(0))
         {
-            _isPressing = true;
-
             _clickPos = Input.mousePosition;
             _currentPos = _clickPos;
             _previousPos = _clickPos;
@@ -46,7 +41,6 @@ public class InputHandler
 
         if (Input.GetMouseButtonUp(0))
         {
-            _isPressing = false;
             _deltaPos = Vector3.zero;
             OnMouseButtonUp?.Invoke();
         }
