@@ -11,6 +11,10 @@ public class GameManager : MonoBehaviour
     [Header("Controllers")]
     [SerializeField] private List<Controller> _controllers;
 
+    [Header("Helpers")]
+    [SerializeField] private ScreenSizeHelper _screenSizeHelper;
+    [SerializeField] private ColorHelper _colorHelper;
+
     private static GameManager _gameManager;
     public static GameManager Instance
     {
@@ -43,6 +47,10 @@ public class GameManager : MonoBehaviour
     {
         _dataManager.Initialize();
         _poolManager.Initialize();
+
+        _screenSizeHelper.Initialize();
+        _colorHelper.Initialize();
+
         _controllers.ForEach(controller => controller.Initialize(this));
 
     }
@@ -74,4 +82,9 @@ public class GameManager : MonoBehaviour
     {
     }
     #endregion
+
+    public void GameQuit()
+    {
+        Application.Quit();
+    }
 }

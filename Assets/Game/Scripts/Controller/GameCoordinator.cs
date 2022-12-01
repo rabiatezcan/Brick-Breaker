@@ -7,8 +7,7 @@ public class GameCoordinator : Controller
     [SerializeField] private Border _border;
     [SerializeField] private Breaker _breaker;
     [SerializeField] private Ball _ball;
-    [SerializeField] private ScreenSizeHelper _screenSizeHelper;
-    [SerializeField] private ColorHelper _colorHelper;
+  
     private InputHandler _inputHandler;
 
     private bool _canListen;
@@ -17,8 +16,6 @@ public class GameCoordinator : Controller
     public override void Initialize(GameManager gameManager)
     {
         _inputHandler = new InputHandler();
-        _screenSizeHelper.Initialize();
-        _colorHelper.Initialize();
         _border.Initialize();
         _breaker.Initialize();
     }
