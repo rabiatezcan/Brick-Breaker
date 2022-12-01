@@ -13,9 +13,9 @@ public class ColorHelper : MonoBehaviour
         Colors = _colors;
     }
 
-    public static Color GetColor(GameEnums.Colors color)
+    public static Color GetColor(int index)
     {
-        return Colors[((int)color)];
+        return Colors[index % Colors.Count];
     }
 
     public static Color GetRandomColor()
