@@ -17,11 +17,14 @@ public class GameCoordinator : Controller
     {
         _inputHandler = new InputHandler();
         _border.Initialize();
-        _breaker.Initialize();
+        _breaker.Initialize(gameManager.LevelController);
+        _ball.Initialize();
     }
 
     public override void Reload()
     {
+        _ball.Reload();
+        _breaker.Reload();
     }
 
     public override void StartGame()

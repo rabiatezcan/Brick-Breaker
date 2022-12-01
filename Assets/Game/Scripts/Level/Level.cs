@@ -11,6 +11,7 @@ public class Level
 {
     private List<Brick> _bricks = new List<Brick>();
 
+    public int BrickCount => _bricks.Count;
     public void Build()
     {
         GenerateBricks();
@@ -18,8 +19,8 @@ public class Level
     }
     public void Remove()
     {
-        //_levelObjects.ForEach(obj => obj.Dismiss());
-        //_levelObjects.Clear();
+        _bricks.ForEach(obj => obj.Dismiss());
+        _bricks.Clear();
     }
 
     private void GenerateBricks()

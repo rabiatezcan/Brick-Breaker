@@ -38,6 +38,6 @@ public class LevelController : Controller
 
     private void UnloadLevel()
     {
-        //_currentLevel.Remove();
+        _level.Remove();
     }
 }

@@ -9,9 +9,17 @@ public class Breaker : MonoBehaviour
     [SerializeField] private MovementSettings _movementSettings;
     [SerializeField] private BreakerBody _body;
 
-    public void Initialize()
+    private LevelController _levelController;
+    private int _breakedBrickCount;
+    public void Initialize(LevelController levelController)
     {
+        _levelController = levelController; 
         _body.Initialize(ColorHelper.GetRandomColor());
+    }
+
+    public void Reload()
+    {
+        transform.position = new Vector3(0f, 0f, transform.position.z);
     }
 
     public void MoveXAxis(Vector2 inputPos)
@@ -26,9 +34,20 @@ public class Breaker : MonoBehaviour
     public void CheckColor(Brick brick)
     {
         if (brick.BodyColor == _body.GetCurrentColor())
+        {
             brick.Dismiss();
 
+            _breakedBrickCount++;
+
+            CheckGameIsOver();
+        }
         else
             _body.SetColor(brick.BodyColor);
+    }
+
+    private void CheckGameIsOver()
+    {
+        if(_breakedBrickCount == _levelController.CurrentLevel.BrickCount)
+            GameManager.Instance.GameSuccess();
     }
 }
