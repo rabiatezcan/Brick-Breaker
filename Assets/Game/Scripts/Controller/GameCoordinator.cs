@@ -8,6 +8,7 @@ public class GameCoordinator : Controller
     [SerializeField] private Breaker _breaker;
     [SerializeField] private Ball _ball;
     [SerializeField] private ScreenSizeHelper _screenSizeHelper;
+    [SerializeField] private ColorHelper _colorHelper;
     private InputHandler _inputHandler;
 
     private bool _canListen;
@@ -17,7 +18,9 @@ public class GameCoordinator : Controller
     {
         _inputHandler = new InputHandler();
         _screenSizeHelper.Initialize();
+        _colorHelper.Initialize();
         _border.Initialize();
+        _breaker.Initialize();
     }
 
     public override void Reload()
@@ -28,15 +31,19 @@ public class GameCoordinator : Controller
     {
         _ball.StartGame();
         ListenInputs();
+        _ball.OnHitBrick += _breaker.CheckColor;
     }
     public override void GameFail()
     {
         StopListenInputs();
+        _ball.OnHitBrick -= _breaker.CheckColor;
+
     }
 
     public override void GameSuccess()
     {
         StopListenInputs();
+        _ball.OnHitBrick -= _breaker.CheckColor;
     }
 
     #endregion
