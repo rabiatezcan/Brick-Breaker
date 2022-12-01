@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BrickBody : MonoBehaviour
@@ -14,6 +13,12 @@ public class BrickBody : MonoBehaviour
         _meshRenderer.material.CopyPropertiesFromMaterial(_material);
         _meshRenderer.material.color = color;
 
+        SetColor(color);
+    }
+
+    private void SetColor(Color color)
+    {
         _currentColor = color;
     }
+
 }
