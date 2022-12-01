@@ -26,7 +26,7 @@ public class Breaker : MonoBehaviour
     {
         Vector3 currentPos = transform.position;
         currentPos += inputPos.x * Time.deltaTime * _movementSettings.HorizontalSpeed * Vector3.right;
-        currentPos.x = Mathf.Clamp(currentPos.x, _movementSettings.MinX, _movementSettings.MaxX);
+        currentPos.x = Mathf.Clamp(currentPos.x, -(ScreenSizeHelper.ScreenHeightPosition - 2f), ScreenSizeHelper.ScreenHeightPosition - 2f);
 
         _rigidbody.MovePosition(currentPos);
     }
@@ -35,7 +35,7 @@ public class Breaker : MonoBehaviour
     {
         if (brick.BodyColor == _body.GetCurrentColor())
         {
-            brick.Dismiss();
+            brick.RemoveBrick();
 
             _breakedBrickCount++;
 
